@@ -1,8 +1,6 @@
-import AuthLayout from "./layouts/AuthLayout";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
 import ShowChatRoom from "./components/ShowChatRoom";
 import ListChatRooms from "./components/ListChatRooms";
 
@@ -10,19 +8,19 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/login",
-      element: <AuthLayout><Login /></AuthLayout>,
+      element: <Login />,
     },
     {
       path: "/register",
-      element: <AuthLayout><Register /></AuthLayout>,
+      element: <Register />,
     },
     {
       path: "/",
-      element: <MainLayout><ListChatRooms /></MainLayout>
+      element: <ListChatRooms /> 
     },
     {
       path: "/r/:id",
-      element: <MainLayout><ShowChatRoom /></MainLayout>
+      element: <ShowChatRoom /> 
     }
   ])
   return (
