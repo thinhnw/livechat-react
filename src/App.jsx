@@ -2,7 +2,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ShowChatRoom from "./components/ShowChatRoom";
-import ListChatRooms from "./components/ListChatRooms";
+import Main from "./components/Main";
+import { UserMeProvider } from "./contexts/UserMeContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,11 +17,11 @@ function App() {
     },
     {
       path: "/",
-      element: <ListChatRooms />
+      element: <UserMeProvider><Main /></UserMeProvider>
     },
     {
       path: "/r/:id",
-      element: <ShowChatRoom /> 
+      element: <UserMeProvider><ShowChatRoom /></UserMeProvider>
     }
   ])
   return (

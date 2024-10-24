@@ -4,7 +4,7 @@
  * @param {object} options - Fetch options (method, headers, body, etc.)
  * @returns {Promise<object>} - Returns a promise with the API response
  */
-export const apiFetch = async (endpoint, options = {}, navigate) => {
+export const apiFetch = async (endpoint, options = {}) => {
   const token = localStorage.getItem('access_token');
 
   try {

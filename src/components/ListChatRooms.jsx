@@ -1,20 +1,18 @@
 import useFetch from "../hooks/useFetch";
-import MainSearch from "./MainSearch";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
-const ListChatRooms = () => {
+const ListChatRooms = ({ filterTerm }) => {
   const { data, isPending, error } = useFetch("/chat_rooms");
-  const [isSearching, setIsSearching] = useState(false);
   return (
     <>
-      <MainSearch />
-      {!isSearching && (
-        <div>
-          {isPending && <div>Loading...</div>}
-          {error && <div>{error}</div>}
-          {data && data["chat_rooms"] && (
-            <ul className="list-none">
-              {data["chat_rooms"].map((chat_room) => (
+      <div>
+        {isPending && <div>Loading...</div>}
+        {error && <div>{error}</div>}
+        {data && data["chat_rooms"] && (
+          <ul className="list-none">
+            {data["chat_rooms"]
+              .filter((chat_room) => chat_room.name.includes(filterTerm))
+              .map((chat_room) => (
                 <li key={chat_room.id} className="p-6 border-b">
                   <div className="flex items-center p-2 border-b hover:bg-gray-100 cursor-pointer">
                     <img
@@ -31,12 +29,15 @@ const ListChatRooms = () => {
                   </div>
                 </li>
               ))}
-            </ul>
-          )}
-        </div>
-      )}
+          </ul>
+        )}
+      </div>
     </>
   );
+};
+
+ListChatRooms.propTypes = {
+  filterTerm: PropTypes.string,
 };
 
 export default ListChatRooms;

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { apiFetch } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 
-const useFetch = (url, options = {}) => {
+const useFetch = (url) => {
 
   const navigate = useNavigate();
   const [data, setData] = useState(null)
@@ -14,7 +14,7 @@ const useFetch = (url, options = {}) => {
     const abortCont = new AbortController();
 
     const fetchData = async () => {
-      const res = await apiFetch(url, { ...options, signal: abortCont.signal })
+      const res = await apiFetch(url, { signal: abortCont.signal })
       setData(res)
       setIsPending(false)
       setError(null)
@@ -27,8 +27,6 @@ const useFetch = (url, options = {}) => {
           setIsPending(false)
           if (err.name === "Unauthorized") {
             localStorage.removeItem("access_token")
-            console.log("Unauthorized");
-            
             navigate("/login")
           }
         }
