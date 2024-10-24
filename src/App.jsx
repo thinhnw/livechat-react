@@ -16,7 +16,7 @@ function App() {
     },
     {
       path: "/",
-      element: <ListChatRooms /> 
+      element: <ListChatRooms />
     },
     {
       path: "/r/:id",
