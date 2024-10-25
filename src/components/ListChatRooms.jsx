@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import PropTypes from "prop-types";
 
 const ListChatRooms = ({ filterTerm }) => {
   const { data, isPending, error } = useFetch("/chat_rooms");
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -13,7 +15,7 @@ const ListChatRooms = ({ filterTerm }) => {
             {data["chat_rooms"]
               .filter((chat_room) => chat_room.name.includes(filterTerm))
               .map((chat_room) => (
-                <li key={chat_room.id} className="p-6 border-b">
+                <li key={chat_room._id} className="p-6 border-b" onClick={() => navigate(`/r/${chat_room._id}`)}>
                   <div className="flex items-center p-2 border-b hover:bg-gray-100 cursor-pointer">
                     <img
                       src={chat_room.avatar_url}
