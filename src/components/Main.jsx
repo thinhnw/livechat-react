@@ -5,11 +5,11 @@ import ListSearchResults from "./ListSearchResults";
 const Main = () => {
   const [term, setTerm] = useState("");
   return (
-    <>
+    <div className="bg-white h-screen">
       <MainSearch term={term} setTerm={setTerm} />
       {!term.includes("@") && <ListChatRooms filterTerm={term}/>}
       {term.includes("@") && <ListSearchResults searchTerm={term} />}
-    </>
+    </div>
   );
 }
  

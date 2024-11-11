@@ -75,7 +75,7 @@ const ShowChatRoom = () => {
   return (
     <>
       {chatRoom && (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen bg-white">
           <ChatHeader avatar_url={chatRoom.avatar_url} name={chatRoom.name} />
           <Messages messages={messages} isPending={isPending} />
           <MessageInput sendMessage={sendWsMessage} />

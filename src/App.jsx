@@ -25,8 +25,9 @@ function App() {
     }
   ])
   return (
-    <div className="h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-      <div className="bg-white h-full w-11/12 max-w-md shadow-lg">
+    <div className="h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-neutral-700">
+    {/* <div className="h-screen flex items-center justify-center"> */}
+      <div className="h-full w-11/12 max-w-md">
         <RouterProvider router={router} /> 
       </div>
     </div>
