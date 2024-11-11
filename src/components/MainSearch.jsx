@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const MainSearch = ({ term, setTerm }) => {
   return (
-    <div className="p-4 border-b" id="MainSearch">
+    <div className="py-4 w-full" id="MainSearch">
       <input
         type="text"
         placeholder="Search"
