@@ -1,27 +1,19 @@
 import { useParams } from "react-router-dom";
-import { apiFetch } from "../utils/api";
 import { useState } from "react";
-
-const MessageInput = () => {
+const MessageInput = ({ sendMessage }) => {
   const { id } = useParams();
   const [message, setMessage] = useState("");
 
-  const sendMessage = async (e) => {
+  const handleKeyDown = async (e) => {
     if (e.key !== "Enter") return;
-    try {
-      const new_message = await apiFetch("/messages", {
-        method: "POST",
-        body: JSON.stringify({
-          content: message,
-          chat_room_id: id
-        }),
-      });
-      if (new_message) {
-        setMessage("");
+    sendMessage(JSON.stringify({
+      type: "message",
+      message: {
+        chat_room_id: id,
+        content: message
       }
-    } catch (error) {
-      console.error(error);
-    }
+    }));
+    setMessage("");
   };
   return (
     <footer className="p-4 border-t">
@@ -31,7 +23,7 @@ const MessageInput = () => {
         className="w-full bg-gray-100 rounded-3xl py-2 px-4 outline-none"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={sendMessage}
+        onKeyDown={handleKeyDown}
       />
     </footer>
   );

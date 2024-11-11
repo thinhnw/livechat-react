@@ -18,7 +18,7 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      localStorage.setItem("access_token", response.access_token);
+      localStorage.setItem("accessToken", response.access_token);
 
       navigate("/");
     } catch (error) {

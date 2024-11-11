@@ -26,7 +26,8 @@ const useFetch = (url) => {
           setError(err.message)
           setIsPending(false)
           if (err.name === "Unauthorized") {
-            localStorage.removeItem("access_token")
+            localStorage.removeItem("accessToken")
+            localStorage.removeItem("userMe")
             navigate("/login")
           }
         }
@@ -34,7 +35,7 @@ const useFetch = (url) => {
     return () => abortCont.abort();
   }, [url])
 
-  return { data, isPending, error }
+  return { data, isPending, error, setData }
 }
 
 export default useFetch;

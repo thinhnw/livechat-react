@@ -5,7 +5,7 @@
  * @returns {Promise<object>} - Returns a promise with the API response
  */
 export const apiFetch = async (endpoint, options = {}) => {
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem('accessToken');
 
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
