@@ -24,7 +24,7 @@ const ListSearchResults = ({ searchTerm }) => {
       console.log(find_chat);
       if (find_chat) {
         navigate(`/r/${find_chat._id}`);
-        return
+        return;
       }
     } catch (error) {
       if (error.message.includes("404")) {
@@ -47,10 +47,15 @@ const ListSearchResults = ({ searchTerm }) => {
       {error && <div>{error}</div>}
       {usersData && (
         <ul className="list-none">
-          {usersData["users"].map((user) => (
-            <li key={user._id} className="p-6 border-b">
+          {usersData["users"].map((user, idx) => (
+            <li
+              key={user._id}
+              className={`p-6 ${
+                idx < usersData["users"].length - 1 ? "border-b" : ""
+              } hover:bg-gray-100 cursor-pointer`}
+            >
               <div
-                className="flex items-center p-2 border-b hover:bg-gray-100 cursor-pointer"
+                className="flex items-center p-2 "
                 onClick={() => createDirectChat(user._id)}
               >
                 <img

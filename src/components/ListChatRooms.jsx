@@ -13,13 +13,13 @@ const ListChatRooms = ({ filterTerm }) => {
         <ul className="list-none">
           {data["chat_rooms"]
             .filter((chat_room) => chat_room.name.includes(filterTerm))
-            .map((chat_room) => (
+            .map((chat_room, idx) => (
               <li
                 key={chat_room._id}
-                className="p-6 border-b"
+                className={`p-6 ${idx < data["chat_rooms"].length - 1 ? 'border-b' : ''} hover:bg-gray-100 cursor-pointer`}
                 onClick={() => navigate(`/r/${chat_room._id}`)}
               >
-                <div className="flex items-center p-2 border-b hover:bg-gray-100 cursor-pointer">
+                <div className="flex items-center p-2">
                   <img
                     src={chat_room.avatar_url}
                     alt={chat_room.name}
