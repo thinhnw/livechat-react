@@ -17,16 +17,15 @@ function App() {
     },
     {
       path: "/",
-      element: <UserMeProvider><Main /></UserMeProvider>
+      element: <UserMeProvider><div className="bg-white h-screen"><Main /></div></UserMeProvider>
     },
     {
       path: "/r/:id",
-      element: <UserMeProvider><ShowChatRoom /></UserMeProvider>
+      element: <UserMeProvider><div className="bg-white h-screen"><ShowChatRoom /></div></UserMeProvider>
     }
   ])
   return (
     <div className="h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-neutral-700">
-    {/* <div className="h-screen flex items-center justify-center"> */}
       <div className="h-full w-11/12 max-w-md">
         <RouterProvider router={router} /> 
       </div>
