@@ -17,16 +17,18 @@ export const apiFetch = async (endpoint, options = {}) => {
       },
       body: options.body ? options.body : undefined,
     });
+    let data = await response.json();
 
     if (response.status === 401) {
-      throw new UnauthorizedError('Please log in!');
+      throw new UnauthorizedError(data.detail);
     }
 
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      console.log(data)
+      throw new Error(data.detail);
     }
 
-    return await response.json();
+    return data
   } catch (error) {
     console.error('API fetch error:', error);
     throw error;
