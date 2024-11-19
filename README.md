@@ -1,3 +1,14 @@
+# Live Chat App
+
+A real-time chat application built with React and Vite, featuring group chat capabilities, instant messaging, and real-time updates via WebSocket.
+
+For the API, visit [livechat-fastapi](https://github.com/thinhnw/livechat-fastapi)
+
+## Features
+- Real-time messaging with WebSocket.
+- One-on-one conversations.
+
+## Setup
 1. Clone the repository
 ```bash
 git clone https://github.com/your-username/react-vite-app.git
