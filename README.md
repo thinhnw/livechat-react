@@ -1,15 +1,15 @@
-# livechat-react
-
-json-server
-```sh
-npx json-server --watch data/db.json --port 8000
+1. Clone the repository
+```bash
+git clone https://github.com/your-username/react-vite-app.git
+cd react-vite-app
 ```
-
-Features
-- [x] Register
-- [x] Login
-- [ ] Search for other users
-- [ ] Create direct chat
-- [ ] Send messages
-- [ ] Retrieve messages
-- [ ] Live chat
+2. Install dependencies
+Using npm:
+```bash
+npm install
+```
+3. Start the development server
+```bash
+npm run dev
+```
+Your app will be running at http://localhost:5173.
